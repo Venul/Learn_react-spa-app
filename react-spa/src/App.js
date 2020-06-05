@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import About from "./components/About/About";
 import Portfolio from "./components/Portfolio/Portfolio";
+import ContactForm from "./components/ContactForm/ContactForm";
 
 import works from "./works";
 
@@ -68,6 +69,7 @@ class App extends React.Component {
           </main>
       </div>
   );
+}
 }
 
 export default App;
