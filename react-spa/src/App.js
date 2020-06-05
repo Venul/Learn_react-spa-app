@@ -6,7 +6,24 @@ import Portfolio from "./components/Portfolio/Portfolio";
 
 import works from "./works";
 
-function App() {
+class App extends React.Component {
+    state = {
+        closed: true
+    };
+
+    openForm() {
+        this.setState({
+            closed: false
+        });
+    }
+
+    closeForm() {
+        this.setState({
+            closed: true
+        });
+    }
+
+    render () {
   return (
       <div className='app'>
           <Header brand='Иван Иванов'></Header>
@@ -28,6 +45,26 @@ function App() {
                       ))}
                   </div>
               </div>
+
+              <div className='contacts'>
+                        <div className='container'>
+                            {this.state.closed ? (
+                                <button
+                                    className='button'
+                                    onClick={() => this.openForm()}
+                                >
+                                    Напишите мне
+                                </button>
+                            ) : (
+                                <div>
+                                    <hr />
+                                    <ContactForm
+                                        onSubmit={() => this.closeForm()}
+                                    />
+                                </div>
+                            )}
+                        </div>
+                </div>
           </main>
       </div>
   );
