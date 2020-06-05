@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Header from "./components/Header/Header";
+import About from "./components/About/About";
+import Portfolio from "./components/Portfolio/Portfolio";
+
+import works from "./works";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className='app'>
+          <Header brand='Иван Иванов'></Header>
+
+          <main className='main'>
+              <About title='React-разработчик Иван Иванов'>
+                  <p>
+                      Разрабатываю на самом крутом в мире фреймворке
+                      <br />
+                      самые крутые в мире SPA!
+                  </p>
+                  <p>С удовольствием и вам что-нибудь разработаю ;)</p>
+              </About>
+
+              <div className='portfolio'>
+                  <div className='container'>
+                      {works.map(work => (
+                          <Portfolio key={work.id} work={work} />
+                      ))}
+                  </div>
+              </div>
+          </main>
+      </div>
   );
 }
 
