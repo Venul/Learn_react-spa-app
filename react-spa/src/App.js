@@ -1,75 +1,26 @@
-import React from "react";
+import React from 'react';
+import { Route, Switch, Redirect} from 'react-router-dom';
 import "./App.css";
 import Header from "./components/Header/Header";
-import About from "./components/About/About";
-import Portfolio from "./components/Portfolio/Portfolio";
-import ContactForm from "./components/ContactForm/ContactForm";
-
-import works from "./works";
+import ProjectPage from "./pages/project/index";
+import HomePage from "./pages/home/index";
 
 class App extends React.Component {
-    state = {
-        closed: true
-    };
+    render() {
+        return (
+            <div className='app'>
+                <Header brand='Иван Иванов'></Header>
 
-    openForm() {
-        this.setState({
-            closed: false
-        });
+                <main className='main'>
+                    <Switch>
+                        <Route path='/project/:id' component={ProjectPage} />
+                        <Route exact path='/' component={HomePage} />
+                        <Redirect to='/' />
+                    </Switch>
+                </main>
+            </div>
+        );
     }
-
-    closeForm() {
-        this.setState({
-            closed: true
-        });
-    }
-
-    render () {
-  return (
-      <div className='app'>
-          <Header brand='Иван Иванов'></Header>
-
-          <main className='main'>
-              <About title='React-разработчик Иван Иванов'>
-                  <p>
-                      Разрабатываю на самом крутом в мире фреймворке
-                      <br />
-                      самые крутые в мире SPA!
-                  </p>
-                  <p>С удовольствием и вам что-нибудь разработаю ;)</p>
-              </About>
-
-              <div className='portfolio'>
-                  <div className='container'>
-                      {works.map(work => (
-                          <Portfolio key={work.id} work={work} />
-                      ))}
-                  </div>
-              </div>
-
-              <div className='contacts'>
-                        <div className='container'>
-                            {this.state.closed ? (
-                                <button
-                                    className='button'
-                                    onClick={() => this.openForm()}
-                                >
-                                    Напишите мне
-                                </button>
-                            ) : (
-                                <div>
-                                    <hr />
-                                    <ContactForm
-                                        onSubmit={() => this.closeForm()}
-                                    />
-                                </div>
-                            )}
-                        </div>
-                </div>
-          </main>
-      </div>
-  );
-}
 }
 
 export default App;
