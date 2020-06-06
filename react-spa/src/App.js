@@ -2,8 +2,8 @@ import React from 'react';
 import { Route, Switch, Redirect} from 'react-router-dom';
 import "./App.css";
 import Header from "./components/Header/Header";
-import ProjectPage from "./pages/project/index";
-import HomePage from "./pages/home/index";
+import ProjectPage from "./pages/project";
+import HomePage from "./pages/home";
 
 class App extends React.Component {
     render() {
